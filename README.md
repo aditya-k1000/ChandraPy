@@ -74,6 +74,10 @@ Here's how to use each of the scripts included with ChandraPy, and whether it's 
      - ***Source***: The source inside the Galaxy/Body whose data is to be processed. Use coordinates in J2000 sexagecimal format (Ex. `J0132546.4+302145.9`)
        
      - ***Observation ID*** (optional): The specific Observation ID whose data you wish to process. Leave blank to process them all. In case the data for a particular Observation ID isn't present, then it's downloaded and reprocessed inside `Data Directory` as specified in the `Download Chandra Data` script
+       
+     - ***p0 Value*** (optional): Value of p0 to be used when computing Bayesian Blocks segmentation
+       
+     - ***Likelihood Threshold*** (optional): The likelihood threshold to be used when computing Bayesian Blocks segmentation (can be added as `np.log(1e-3) for ln(0.001)`)
    
    - This script will download all data for that Object and that/those Observation ID(s). It will run the `chandra_repro` script to produce reprocessed `level 2` files, and will run barycentric corrections on those. Finally, it will rename the files to have names `<obs_id>_<type>.fits`. These will be stored in directory `<output_dir>/<object>/<obs_id>`. The file types are `asol1`, `bpix1`, `evt2`, `flt2`, `fov1`, `msk1`, `mtl1`, `pbk0`, `stat1`. The DTF file of filetype `dtf1` is also included for HRC corrections due to it requiring Dead-Time Correction
      
@@ -103,6 +107,10 @@ Here's how to use each of the scripts included with ChandraPy, and whether it's 
      - ***`source`***: The source inside the Galaxy/Body whose data is to be processed. Use coordinates in J2000 sexagecimal format (Ex. `J0132546.4+302145.9`)
        
      - ***`obs_id`***: The specific Observation ID whose data you wish to process. In case the data for that particular Observation ID isn't present, then it's downloaded and reprocessed inside `main_data_dir` as specified in the `Download Chandra Data` script
+       
+     - ***`p0`*** (optional): Value of p0 to be used when computing Bayesian Blocks segmentation
+       
+     - ***`likelihood_threshold`*** (optional): The likelihood threshold to be used when computing Bayesian Blocks segmentation (can be added as `np.log(1e-3) for ln(0.001)`)
 
 To run any of these scripts, open the terminal and, after initializing the CIAO conda environment, run `python <absolute path to script file.`
 
