@@ -55,7 +55,6 @@ def processing():
             print("Error", e, end = "")
             shutil.rmtree(obs_dir)
 
-#GUI
 root = ctk.CTk()
 ctk.set_appearance_mode("Dark")
 root.geometry("600x400")

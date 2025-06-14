@@ -8,12 +8,15 @@ from ChandraPy import Download as d
 from ChandraPy import Utilities as utils
 import shutil
 
+#Adjust these values to your preference
 galaxy = ""
 main_data_dir = ""
 main_source_dir = ""
-binsize = 500
+binsize = 500 
 source = ""
 obs_id = ""
+p0 = 5
+likelihood_threshold = np.log(1e-4)
 
 galaxy_data_dir = os.path.join(main_data_dir, galaxy)
 source_dir = os.path.join(main_source_dir, galaxy, source)
@@ -41,7 +44,7 @@ print(f"Obs. ID {obs_id}...", end = "")
 
 try:
     utils.save_source_region(obs_dir, data_dir, source)
-    processed = lc.lightcurve_generation(obs_dir, data_dir, source, binsize, 10, np.log(1e-4))
+    processed = lc.lightcurve_generation(obs_dir, data_dir, source, binsize, p0, likelihood_threshold)
     if not processed:
         print("\033[93mEmpty\033[0m\n")
     else:

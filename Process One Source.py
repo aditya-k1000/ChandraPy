@@ -1,6 +1,7 @@
 import customtkinter as ctk
-import pandas as pd
+import numpy as np
 import os
+import pandas as pd
 import sys
 sys.path.append(os.getcwd())
 sys.path.append(os.path.join(os.getcwd(), "ChandraPy"))
@@ -16,7 +17,9 @@ def processing():
     binsize = entries[3].get()
     source = entries[4].get()
     obs_id = entries[5].get() 
-
+    p0 = float(entries[6].get())
+    likelihood_threshold = float(eval(entries[7].get()))
+    
     galaxy_data_dir = os.path.join(main_data_dir, galaxy)
     source_dir = os.path.join(main_source_dir, galaxy, source)
     os.makedirs(galaxy_data_dir, exist_ok = True)
@@ -50,7 +53,7 @@ def processing():
 
             try:
                 utils.save_source_region(obs_dir, data_dir, source)
-                processed = lc.lightcurve_generation(obs_dir, data_dir, source, binsize)
+                processed = lc.lightcurve_generation(obs_dir, data_dir, source, binsize, p0, likelihood_threshold)
                 if not processed:
                     not_processed += 1
                     to_remove.append(obs_dir)
@@ -89,7 +92,7 @@ def processing():
 
         try:
             utils.save_source_region(obs_dir, data_dir, source)
-            processed = lc.lightcurve_generation(obs_dir, data_dir, source, binsize)
+            processed = lc.lightcurve_generation(obs_dir, data_dir, source, binsize, p0, likelihood_threshold)
             if not processed:
                 print("\033[93mEmpty\033[0m")
             else:
@@ -102,10 +105,9 @@ def processing():
         if not processed:
             shutil.rmtree(obs_dir, ignore_errors = True)
 
-#GUI
 root = ctk.CTk()
 ctk.set_appearance_mode("Dark")
-root.geometry("600x400")
+root.geometry("750x500")
 root.resizable(0, 0)
 root.title("Process One Source")
 
@@ -114,18 +116,18 @@ def enable_paste(event):
 
 title_label = ctk.CTkLabel(root, text = "Process One Source", font = ("Helvetica", 45), text_color = "white")
 title_label.place(relx = 0.5, rely = 0.14, anchor = ctk.CENTER)
-labels = [("Galaxy", ""), ("Data Directory", ""), ("Output Directory", ""), ("Binsize", ), ("Source", ""), ("Observation ID", "")]
+labels = [("Galaxy", ""), ("Data Directory", ""), ("Output Directory", ""), ("Binsize", 500), ("Source", ""), ("Observation ID", ""), ("p0 value", 5), ("Likelihood Threshold", np.log(1e-4))]
 entries = []
-start_y = 100
+start_y = 110
 spacing = 40
 
 for i, label_value in enumerate(labels):
     label_text, value = label_value
     label = ctk.CTkLabel(root, text = label_text + ":", anchor = "e", width = 150, text_color = "white")
-    label.place(x = 5, y = start_y + i * spacing)
+    label.place(x = 80, y = start_y + i * spacing)
     entry = ctk.CTkEntry(root, width = 300, text_color = "white")
     entry.insert(0, value)  
-    entry.place(x = 160, y = start_y + i * spacing)
+    entry.place(x = 235, y = start_y + i * spacing)
     entries.append(entry)
 
 for entry in entries:
