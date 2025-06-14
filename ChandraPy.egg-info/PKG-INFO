@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: ChandraPy
+Version: 1.0
+Summary: ChandraPy is an open-source Python Package that simplifies and speeds up data processing using the Chandra X-Ray Observation
+Home-page: https://github.com/aditya-k1000/ChandraPy
+Author: Aditya Kumar
+Author-email: adityakumarpersonalemail@gmail.com
+License: MIT

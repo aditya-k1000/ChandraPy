@@ -1,0 +1,10 @@
+setup.py
+ChandraPy/Download.py
+ChandraPy/Lightcurves.py
+ChandraPy/Plotting.py
+ChandraPy/Utilities.py
+ChandraPy/__init__.py
+ChandraPy.egg-info/PKG-INFO
+ChandraPy.egg-info/SOURCES.txt
+ChandraPy.egg-info/dependency_links.txt
+ChandraPy.egg-info/top_level.txt
