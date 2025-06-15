@@ -1,7 +1,7 @@
 # ChandraPy
 ChandraPy is an open-source Python Package that simplifies and speeds up data processing using the Chandra X-Ray Observatory.
 
-## Differences compared to Lightcurves App
+## Differences compared to the Lightcurves App
 The Lightcurves App (https://github.com/SenatorTreason05/Lightcurves.git) is a compact tool that generates light curves for all sources given in the Chandra Source Catalog within a user-specified region. It's intended to quickly generate all the light curves for a cursory inspection of the sources in that region. It downloads the `regevt3` files provided by the CSC for all these sources, allowing it to generate light curves very quickly and efficiently. However, this approach may not be the most rigorous and accurate method of producing results.
 
 ChandraPy, on the other hand, is a Python Package which gives the user control of all the individual functions for applications in various workflows. It also produces all of its results from raw data reprocessed and extracted locally. In future releases, I plan to add a script which gives a functionality similar to that of the Lightcurves App.
@@ -9,7 +9,7 @@ ChandraPy, on the other hand, is a Python Package which gives the user control o
 ## Installation Prerequisites
 Ensure that CIAO is installed on your system, preferably in a conda environment. Install the CALDB as well, following instructions from this thread: https://cxc.cfa.harvard.edu/ciao/download/conda.html. This automatically installs Python in that environment, so there's no need to do that separately.
 
-I'd recommend creating an alias in the `bash_profile/bashrc` file to easily initialize it. Further, if you have other software like HEASoft/SAS installed, I'd recommend exporting the `PATH` variable again, as various functions such as `pget` can get messed up. For example, my alias is:
+I'd recommend creating an alias in the `bash_profile`/`bashrc` file to easily initialize it. Further, if you have other software like HEASoft/SAS installed, I'd recommend exporting the `PATH` variable again, as various functions such as `pget` can get messed up. For example, my alias is:
 ```bash
 function ciao() {
 	conda activate ciao-4.17
