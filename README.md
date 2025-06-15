@@ -2,7 +2,7 @@
 ChandraPy is an open-source Python Package that simplifies and speeds up data processing using the Chandra X-Ray Observatory.
 
 ## Differences compared to Lightcurves App
-The Lightcurves App (https://github.com/SenatorTreason05/Lightcurves.git) is a compact tool that generates light curves for all sources given in the Chandra Source Catalog within a user-specified region. It's intended to quickly generate all the light curves for a cursory inspection of the sources in that region.
+The Lightcurves App (https://github.com/SenatorTreason05/Lightcurves.git) is a compact tool that generates light curves for all sources given in the Chandra Source Catalog within a user-specified region. It's intended to quickly generate all the light curves for a cursory inspection of the sources in that region. It downloads the `regevt3` files provided by the CSC for all these sources, allowing it to generate light curves very quickly and efficiently. However, this approach may not be the most rigorous and accurate method of producing results.
 
 ChandraPy, on the other hand, is a Python Package which gives the user control of all the individual functions for applications in various workflows. It also produces all of its results from raw data reprocessed and extracted locally. In future releases, I plan to add a script which gives a functionality similar to that of the Lightcurves App.
 
